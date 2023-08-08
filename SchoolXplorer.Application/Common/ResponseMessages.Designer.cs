@@ -61,11 +61,38 @@ namespace SchoolXplorer.Application.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please ensure you have entered City..
+        /// </summary>
+        public static string InvalidCity {
+            get {
+                return ResourceManager.GetString("InvalidCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid school district data..
         /// </summary>
         public static string InvalidData {
             get {
                 return ResourceManager.GetString("InvalidData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please ensure you have entered Name..
+        /// </summary>
+        public static string InvalidName {
+            get {
+                return ResourceManager.GetString("InvalidName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please ensure you have entered number of schools greater than 0..
+        /// </summary>
+        public static string InvalidNoOfSchools {
+            get {
+                return ResourceManager.GetString("InvalidNoOfSchools", resourceCulture);
             }
         }
     }

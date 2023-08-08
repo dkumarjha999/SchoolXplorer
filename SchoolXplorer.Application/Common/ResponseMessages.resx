@@ -117,7 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="InvalidCity" xml:space="preserve">
+    <value>Please ensure you have entered City.</value>
+  </data>
   <data name="InvalidData" xml:space="preserve">
     <value>Invalid school district data.</value>
+  </data>
+  <data name="InvalidName" xml:space="preserve">
+    <value>Please ensure you have entered Name.</value>
+  </data>
+  <data name="InvalidNoOfSchools" xml:space="preserve">
+    <value>Please ensure you have entered number of schools greater than 0.</value>
   </data>
 </root>
