@@ -4,9 +4,9 @@ using SchoolXplorer.Application.Dtos;
 
 namespace SchoolXplorer.Application.Validators
 {
-	public class SchoolDistrictDtoValidator : AbstractValidator<SchoolDistrictDto>
+	public class CreateSchoolDistrictDtoValidator : AbstractValidator<CreateSchoolDistrictDto>
 	{
-		public SchoolDistrictDtoValidator()
+		public CreateSchoolDistrictDtoValidator()
 		{
 			RuleFor(sd => sd.Name).NotNull().NotEmpty().WithMessage(ResponseMessages.InvalidName);
 			RuleFor(sd => sd.City).NotNull().NotEmpty().WithMessage(ResponseMessages.InvalidCity);

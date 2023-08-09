@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Testing;
-using SchoolXplorer.Api.Constants;
+﻿using SchoolXplorer.Api.Constants;
 using SchoolXplorer.Application.Common;
 using SchoolXplorer.Application.Dtos;
 
@@ -19,19 +18,19 @@ namespace SchoolXplorer.IntegrationTest.Controllers
 		public async Task CreateSchoolDistrictAsync_WhithValidData_ShouldReturnCreatedSchoolDistrict()
 		{
 			//Arrange
-			var schoolDistrictDto = _fixture.Build<SchoolDistrictDto>().Without(X => X.Id).Create();
+			var schoolDistrictDto = _fixture.Create<CreateSchoolDistrictDto>();
 			// Act
 			var response = await _httpClient.PostAsJsonAsync(ApiRoutes.SchoolDistrictBaseUrl, schoolDistrictDto);
 			var createdSchoolDistrict = await response.Content.ReadFromJsonAsync<SchoolDistrictDto>();
 			// Assert
 			response.StatusCode.Should().Be(HttpStatusCode.Created);
-			createdSchoolDistrict.Should().BeEquivalentTo(schoolDistrictDto);
+			schoolDistrictDto.Should().BeEquivalentTo(createdSchoolDistrict, options => options.Excluding(X => X.Id));
 		}
 		[Fact]
 		public async Task CreateSchoolDistrictAsync_WhithInValidData_ShouldReturnBadRequest()
 		{
 			//Arrange
-			var schoolDistrictDto = _fixture.Create<SchoolDistrictDto>();
+			var schoolDistrictDto = _fixture.Build<CreateSchoolDistrictDto>().Without(X => X.Name).Create();
 			// Act
 			var response = await _httpClient.PostAsJsonAsync(ApiRoutes.SchoolDistrictBaseUrl, schoolDistrictDto);
 			var content = await response.Content.ReadAsStringAsync();

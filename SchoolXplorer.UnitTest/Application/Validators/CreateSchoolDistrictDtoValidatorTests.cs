@@ -1,24 +1,23 @@
-﻿global using FluentValidation.TestHelper;
-using SchoolXplorer.Application.Dtos;
+﻿using SchoolXplorer.Application.Dtos;
 using SchoolXplorer.Application.Validators;
 
 namespace SchoolXplorer.UnitTest.Application.Validators
 {
-	public class SchoolDistrictDtoValidatorTests
+	public class CreateSchoolDistrictDtoValidatorTests
 	{
-		private SchoolDistrictDtoValidator _validator;
+		private CreateSchoolDistrictDtoValidator _validator;
 		private Fixture _fixture;
-		public SchoolDistrictDtoValidatorTests()
+		public CreateSchoolDistrictDtoValidatorTests()
 		{
-			_validator = new SchoolDistrictDtoValidator();
+			_validator = new CreateSchoolDistrictDtoValidator();
 			_fixture = new Fixture();
 		}
 		[Fact]
 		public void Validator_WhenNameIsNull_ShouldReturnNameError()
 		{
 			//Arrange
-			var schoolDistrictDto = _fixture.Create<SchoolDistrictDto>();
-			schoolDistrictDto.Name =null;
+			var schoolDistrictDto = _fixture.Create<CreateSchoolDistrictDto>();
+			schoolDistrictDto.Name = null;
 			//Act
 			var result = _validator.TestValidate(schoolDistrictDto);
 			//Assert
@@ -29,8 +28,8 @@ namespace SchoolXplorer.UnitTest.Application.Validators
 		public void Validator_WhenNameIsEmpty_ShouldReturnNameError()
 		{
 			//Arrange
-			var schoolDistrictDto = _fixture.Create<SchoolDistrictDto>();
-			schoolDistrictDto.Name =string.Empty;
+			var schoolDistrictDto = _fixture.Create<CreateSchoolDistrictDto>();
+			schoolDistrictDto.Name = string.Empty;
 			//Act
 			var result = _validator.TestValidate(schoolDistrictDto);
 			//Assert
@@ -41,8 +40,8 @@ namespace SchoolXplorer.UnitTest.Application.Validators
 		public void Validator_WhenCityIsNull_ShouldReturnCityError()
 		{
 			//Arrange
-			var schoolDistrictDto = _fixture.Create<SchoolDistrictDto>();
-			schoolDistrictDto.City=null;
+			var schoolDistrictDto = _fixture.Create<CreateSchoolDistrictDto>();
+			schoolDistrictDto.City = null;
 			//Act
 			var result = _validator.TestValidate(schoolDistrictDto);
 			//Assert
@@ -53,7 +52,7 @@ namespace SchoolXplorer.UnitTest.Application.Validators
 		public void Validator_WhenCityIsEmpty_ShouldReturnCityError()
 		{
 			//Arrange
-			var schoolDistrictDto = _fixture.Create<SchoolDistrictDto>();
+			var schoolDistrictDto = _fixture.Create<CreateSchoolDistrictDto>();
 			schoolDistrictDto.City=string.Empty;
 			//Act
 			var result = _validator.TestValidate(schoolDistrictDto);
@@ -65,7 +64,7 @@ namespace SchoolXplorer.UnitTest.Application.Validators
 		public void Validator_WhenNumberOfSchoolsIsNotGreaterThanZero_ShouldReturnNumberOfSchoolsError()
 		{
 			//Arrange
-			var schoolDistrictDto = _fixture.Create<SchoolDistrictDto>();
+			var schoolDistrictDto = _fixture.Create<CreateSchoolDistrictDto>();
 			schoolDistrictDto.NumberOfSchools = 0;
 			//Act
 			var result = _validator.TestValidate(schoolDistrictDto);
@@ -77,7 +76,7 @@ namespace SchoolXplorer.UnitTest.Application.Validators
 		public void Validator_WhenDtoIsValid_ShouldNotHaveAnyErrors()
 		{
 			//Arrange
-			var schoolDistrictDto = _fixture.Create<SchoolDistrictDto>();
+			var schoolDistrictDto = _fixture.Create<CreateSchoolDistrictDto>();
 			//Act
 			var result = _validator.TestValidate(schoolDistrictDto);
 			//Assert
