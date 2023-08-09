@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SchoolXplorer.Domain\SchoolXplorer.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Common\ResponseMessages.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

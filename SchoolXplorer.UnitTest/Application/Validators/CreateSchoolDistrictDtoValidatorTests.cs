@@ -5,8 +5,8 @@ namespace SchoolXplorer.UnitTest.Application.Validators
 {
 	public class CreateSchoolDistrictDtoValidatorTests
 	{
-		private CreateSchoolDistrictDtoValidator _validator;
-		private Fixture _fixture;
+		private readonly CreateSchoolDistrictDtoValidator _validator;
+		private readonly Fixture _fixture;
 		public CreateSchoolDistrictDtoValidatorTests()
 		{
 			_validator = new CreateSchoolDistrictDtoValidator();
