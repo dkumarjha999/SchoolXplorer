@@ -30,7 +30,8 @@ namespace SchoolXplorer.IntegrationTest.Controllers
 		public async Task CreateSchoolDistrictAsync_WhithInValidData_ShouldReturnBadRequest()
 		{
 			//Arrange
-			var schoolDistrictDto = _fixture.Build<CreateSchoolDistrictDto>().Without(X => X.Name).Create();
+			var schoolDistrictDto = _fixture.Create<CreateSchoolDistrictDto>();
+			schoolDistrictDto.Name=String.Empty;
 			// Act
 			var response = await _httpClient.PostAsJsonAsync(ApiRoutes.SchoolDistrictBaseUrl, schoolDistrictDto);
 			var content = await response.Content.ReadAsStringAsync();

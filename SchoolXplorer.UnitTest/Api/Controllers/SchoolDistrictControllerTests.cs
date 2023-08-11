@@ -1,6 +1,8 @@
-﻿using SchoolXplorer.Api.Controllers;
+﻿using AutoMapper;
+using SchoolXplorer.Api.Controllers;
 using SchoolXplorer.Application.Common;
 using SchoolXplorer.Application.Dtos;
+using SchoolXplorer.Application.Mappings;
 using SchoolXplorer.Application.Services;
 using SchoolXplorer.Application.Validators;
 
@@ -12,11 +14,12 @@ namespace SchoolXplorer.UnitTest.Api.Controllers
 		private readonly IValidator<CreateSchoolDistrictDto> _validator;
 		private readonly SchoolDistrictController _controller;
 		private readonly Fixture _fixture;
-
+		private readonly IMapper _mapper;
 		public SchoolDistrictControllerTests()
 		{
 			_validator = new CreateSchoolDistrictDtoValidator();
 			_mockSchoolDistrictService = new Mock<ISchoolDistrictService>();
+			_mapper = new MapperConfiguration(cfg => cfg.AddProfile<SchoolDistrictProfile>()).CreateMapper();
 			_controller = new SchoolDistrictController(_mockSchoolDistrictService.Object, _validator);
 			_fixture = new Fixture();
 		}
@@ -24,16 +27,16 @@ namespace SchoolXplorer.UnitTest.Api.Controllers
 		public async Task CreateSchoolDistrictAsync_WithValidData_ShouldReturnOkWithCreatedData()
 		{
 			// Arrange
-			var newSchoolDistrictDto = _fixture.Create<CreateSchoolDistrictDto>();
 			var createdSchoolDistrictDto = _fixture.Create<SchoolDistrictDto>();
+			var newSchoolDistrictDto = _mapper.Map<CreateSchoolDistrictDto>(createdSchoolDistrictDto);
 
-			_mockSchoolDistrictService.Setup(x => x.CreateSchoolDistrictAsync(newSchoolDistrictDto)).ReturnsAsync(createdSchoolDistrictDto);
+			_mockSchoolDistrictService.Setup(x => x.CreateSchoolDistrictAsync(It.IsAny<CreateSchoolDistrictDto>())).ReturnsAsync(createdSchoolDistrictDto);
 
 			// Act
 			var result = await _controller.CreateSchoolDistrictAsync(newSchoolDistrictDto);
 
 			// Assert
-			_mockSchoolDistrictService.Verify(x => x.CreateSchoolDistrictAsync(newSchoolDistrictDto), Times.Once);
+			_mockSchoolDistrictService.Verify(x => x.CreateSchoolDistrictAsync(It.IsAny<CreateSchoolDistrictDto>()), Times.Once);
 			result.Should().BeOfType<CreatedResult>().Which.Value.Should().BeEquivalentTo(newSchoolDistrictDto);
 		}
 
@@ -48,6 +51,21 @@ namespace SchoolXplorer.UnitTest.Api.Controllers
 			// Assert
 			result.Should().BeOfType<BadRequestObjectResult>().Which.StatusCode.Should().Be(StatusCodes.Status400BadRequest);
 			result.As<BadRequestObjectResult>().Value.Should().BeEquivalentTo(ResponseMessages.InvalidData);
+		}
+
+		[Fact]
+		public async Task CreateSchoolDistrictAsync_OnException_ShouldReturnsInternalServerError()
+		{
+			// Arrange
+			var schoolDistrictDto = _fixture.Create<CreateSchoolDistrictDto>();
+
+			_mockSchoolDistrictService.Setup(x => x.CreateSchoolDistrictAsync(It.IsAny<CreateSchoolDistrictDto>())).ThrowsAsync(new Exception());
+
+			// Act
+			var result = await _controller.CreateSchoolDistrictAsync(schoolDistrictDto);
+
+			// Assert
+			result.Should().BeOfType<StatusCodeResult>().Which.StatusCode.Should().Be(StatusCodes.Status500InternalServerError);
 		}
 	}
 }

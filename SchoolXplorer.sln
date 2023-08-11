@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolXplorer.Application",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolXplorer.UnitTest", "SchoolXplorer.UnitTest\SchoolXplorer.UnitTest.csproj", "{D30B852F-E91E-41BC-82C5-FDBA14F0B314}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolXplorer.Domain", "SchoolXplorer.Domain\SchoolXplorer.Domain.csproj", "{88FC708C-FAFC-44AE-81F3-1E177E08A580}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolXplorer.Domain", "SchoolXplorer.Domain\SchoolXplorer.Domain.csproj", "{88FC708C-FAFC-44AE-81F3-1E177E08A580}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolXplorer.Infrastructure", "SchoolXplorer.Infrastructure\SchoolXplorer.Infrastructure.csproj", "{FA9D4CBD-7D2F-47FB-9F81-540F58E12D08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{88FC708C-FAFC-44AE-81F3-1E177E08A580}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88FC708C-FAFC-44AE-81F3-1E177E08A580}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88FC708C-FAFC-44AE-81F3-1E177E08A580}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA9D4CBD-7D2F-47FB-9F81-540F58E12D08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA9D4CBD-7D2F-47FB-9F81-540F58E12D08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA9D4CBD-7D2F-47FB-9F81-540F58E12D08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA9D4CBD-7D2F-47FB-9F81-540F58E12D08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
