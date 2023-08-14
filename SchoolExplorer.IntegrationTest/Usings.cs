@@ -1,6 +1,12 @@
 global using System.Net;
 global using System.Net.Http.Json;
 global using AutoFixture;
+global using Bogus;
 global using FluentAssertions;
+global using Microsoft.AspNetCore.Hosting;
 global using Microsoft.AspNetCore.Mvc.Testing;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using MongoDB.Driver;
+global using SchoolExplorer.Domain.Entities;
 global using Xunit;

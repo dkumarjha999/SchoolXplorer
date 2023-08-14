@@ -11,9 +11,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoFixture" Version="4.18.0" />
+    <PackageReference Include="Bogus" Version="34.0.2" />
     <PackageReference Include="FluentAssertions" Version="6.11.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.9" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.21.0" />
     <PackageReference Include="xunit" Version="2.4.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -28,6 +30,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SchoolExplorer.Api\SchoolExplorer.Api.csproj" />
     <ProjectReference Include="..\SchoolExplorer.Application\SchoolExplorer.Application.csproj" />
+    <ProjectReference Include="..\SchoolExplorer.Infrastructure\SchoolExplorer.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
