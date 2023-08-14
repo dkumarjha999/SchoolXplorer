@@ -1,4 +1,5 @@
-﻿using SchoolExplorer.Infrastructure.MongoData;
+﻿using SchoolExplorer.Domain.Entities;
+using SchoolExplorer.Infrastructure.MongoData;
 namespace SchoolExplorer.IntegrationTest.Helpers
 {
 	public static class Utilities

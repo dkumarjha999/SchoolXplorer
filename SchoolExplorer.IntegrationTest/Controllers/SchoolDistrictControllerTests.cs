@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using SchoolExplorer.Api.Constants;
+﻿using SchoolExplorer.Api.Constants;
 using SchoolExplorer.Application.Common;
 using SchoolExplorer.Application.Dtos;
 using SchoolExplorer.Application.Mappings;
