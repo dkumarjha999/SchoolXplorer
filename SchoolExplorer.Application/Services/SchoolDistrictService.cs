@@ -19,7 +19,7 @@ namespace SchoolExplorer.Application.Services
 		{
 			var schoolDistrictModel = _mapper.Map<SchoolDistrict>(schoolDistrictDto);
 			var schoolDistrict = await _schoolDistrictRepository.CreateAsync(schoolDistrictModel);
-			return _mapper.Map<SchoolDistrictDto>(schoolDistrict);
+			return _mapper.Map<SchoolDistrict, SchoolDistrictDto>(schoolDistrict);
 		}
 	}
 }

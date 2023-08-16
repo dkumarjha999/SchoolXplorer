@@ -31,11 +31,10 @@ namespace SchoolExplorer.IntegrationTest.Controllers
 			// Act
 			var response = await _httpClient.PostAsJsonAsync(ApiRoutes.SchoolDistrictBaseUrl, createSchoolDistrictDto);
 			var createdSchoolDistrict = await response.Content.ReadFromJsonAsync<SchoolDistrictDto>();
-			var createdSchoolDistrictDto = _mapper.Map<CreateSchoolDistrictDto>(createdSchoolDistrict);
-
 			// Assert
 			response.StatusCode.Should().Be(HttpStatusCode.Created);
-			createSchoolDistrictDto.Should().BeEquivalentTo(createdSchoolDistrictDto);
+			createdSchoolDistrict.Id.Should().NotBeNullOrEmpty();
+			createSchoolDistrictDto.Should().BeEquivalentTo(createdSchoolDistrict, options => options.Excluding(X => X.Id));
 		}
 		[Fact]
 		public async Task CreateSchoolDistrictAsync_WhithInValidData_ShouldReturnBadRequest()
