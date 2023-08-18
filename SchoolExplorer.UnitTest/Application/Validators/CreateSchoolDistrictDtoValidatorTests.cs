@@ -1,7 +1,4 @@
-﻿using SchoolExplorer.Application.Dtos;
-using SchoolExplorer.Application.Validators;
-
-namespace SchoolExplorer.UnitTest.Application.Validators
+﻿namespace SchoolExplorer.UnitTest.Application.Validators
 {
 	public class CreateSchoolDistrictDtoValidatorTests
 	{

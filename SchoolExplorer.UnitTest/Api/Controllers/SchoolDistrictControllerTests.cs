@@ -1,9 +1,5 @@
 ﻿using SchoolExplorer.Api.Controllers;
 using SchoolExplorer.Application.Common;
-using SchoolExplorer.Application.Dtos;
-using SchoolExplorer.Application.Mappings;
-using SchoolExplorer.Application.Services;
-using SchoolExplorer.Application.Validators;
 
 namespace SchoolExplorer.UnitTest.Api.Controllers
 {
@@ -44,12 +40,13 @@ namespace SchoolExplorer.UnitTest.Api.Controllers
 		{
 			// Arrange
 			var invalidSchoolDistrictDto = new CreateSchoolDistrictDto();
+			var validationErros = _validator.Validate(invalidSchoolDistrictDto).Errors.Select(error => error.ErrorMessage);
 			// Act
 			var result = await _controller.CreateSchoolDistrictAsync(invalidSchoolDistrictDto);
 
 			// Assert
 			result.Should().BeOfType<BadRequestObjectResult>().Which.StatusCode.Should().Be(StatusCodes.Status400BadRequest);
-			result.As<BadRequestObjectResult>().Value.Should().BeEquivalentTo(ResponseMessages.InvalidData);
+			result.As<BadRequestObjectResult>().Value.Should().BeEquivalentTo(validationErros);
 		}
 
 		[Fact]
@@ -58,13 +55,14 @@ namespace SchoolExplorer.UnitTest.Api.Controllers
 			// Arrange
 			var schoolDistrictDto = _fixture.Create<CreateSchoolDistrictDto>();
 
-			_mockSchoolDistrictService.Setup(x => x.CreateAsync(It.IsAny<CreateSchoolDistrictDto>())).ThrowsAsync(new Exception());
+			_mockSchoolDistrictService.Setup(x => x.CreateAsync(It.IsAny<CreateSchoolDistrictDto>())).ThrowsAsync(new Exception(ResponseMessages.InternalServerError));
 
 			// Act
 			var result = await _controller.CreateSchoolDistrictAsync(schoolDistrictDto);
 
 			// Assert
-			result.Should().BeOfType<StatusCodeResult>().Which.StatusCode.Should().Be(StatusCodes.Status500InternalServerError);
+			result.Should().BeOfType<ObjectResult>().Which.StatusCode.Should().Be(StatusCodes.Status500InternalServerError);
+			result.As<ObjectResult>().Value.Should().BeEquivalentTo(ResponseMessages.InternalServerError);
 		}
 	}
 }

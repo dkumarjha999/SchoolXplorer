@@ -24,7 +24,7 @@ namespace SchoolExplorer.IntegrationTest.Helpers
 				var db = scopedServices.GetRequiredService<IMongoDatabase>();
 				try
 				{
-					Utilities.ReinitializeDbForTests(db, mongoDbSettings);
+					DbUtilities.ReinitializeDbForTests(db, mongoDbSettings);
 				}
 				catch (Exception ex)
 				{

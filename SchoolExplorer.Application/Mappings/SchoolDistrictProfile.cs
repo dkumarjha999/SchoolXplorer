@@ -8,11 +8,9 @@ namespace SchoolExplorer.Application.Mappings
 	{
 		public SchoolDistrictProfile()
 		{
-			CreateMap<CreateSchoolDistrictDto, SchoolDistrictDto>();
-			CreateMap<SchoolDistrictDto, CreateSchoolDistrictDto>();
-			CreateMap<CreateSchoolDistrictDto, SchoolDistrict>();
+			CreateMap<CreateSchoolDistrictDto, SchoolDistrictDto>().ReverseMap();
+			CreateMap<CreateSchoolDistrictDto, SchoolDistrict>().ReverseMap();
 			CreateMap<SchoolDistrict, SchoolDistrictDto>();
-			CreateMap<SchoolDistrict, CreateSchoolDistrictDto>();
 		}
 	}
 }

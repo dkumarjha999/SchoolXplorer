@@ -1,7 +1,4 @@
-﻿using SchoolExplorer.Application.Dtos;
-using SchoolExplorer.Application.Mappings;
-using SchoolExplorer.Application.Services;
-using SchoolExplorer.Domain.Entities;
+﻿using SchoolExplorer.Domain.Entities;
 using SchoolExplorer.Domain.Repositories;
 
 namespace SchoolExplorer.UnitTest.Application.Services

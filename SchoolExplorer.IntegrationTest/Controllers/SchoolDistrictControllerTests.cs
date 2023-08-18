@@ -24,8 +24,8 @@ namespace SchoolExplorer.IntegrationTest.Controllers
 		public async Task CreateSchoolDistrictAsync_WhithValidData_ShouldReturnCreatedSchoolDistrict()
 		{
 			//Arrange
-			Utilities.ReinitializeDb(_factory);
-			var schoolDistrict = Utilities.GenerateSeedingSchoolDistricts(1)[0];
+			DbUtilities.ReinitializeDb(_factory);
+			var schoolDistrict = DbUtilities.GenerateSeedingSchoolDistricts(1)[0];
 			var createSchoolDistrictDto = _mapper.Map<CreateSchoolDistrictDto>(schoolDistrict);
 
 			// Act
@@ -49,7 +49,7 @@ namespace SchoolExplorer.IntegrationTest.Controllers
 
 			// Assert
 			response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
-			content.Should().Contain(ResponseMessages.InvalidData);
+			content.Should().Contain(ResponseMessages.InvalidName);
 		}
 	}
 }

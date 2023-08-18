@@ -2,7 +2,7 @@
 using SchoolExplorer.Infrastructure.MongoData;
 namespace SchoolExplorer.IntegrationTest.Helpers
 {
-	public static class Utilities
+	public static class DbUtilities
 	{
 		private static List<SchoolDistrict> seedchoolDistricts = GenerateSeedingSchoolDistricts(5);
 
